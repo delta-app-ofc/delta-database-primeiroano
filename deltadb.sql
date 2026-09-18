@@ -49,8 +49,17 @@ create table tb_user_habit_day(
     day_of_week_id int not null unique references tb_day_of_week(id) on delete cascade
 );
 
--- Tabela região
+-- tb_region
 create table tb_region(
     id serial primary key,
     name varchar(20) not null
+);
+
+-- tb_address
+create table tb_address(
+    id serial primary key,
+    region_id int not null references tb_region(id) on delete cascade,
+    cep varchar(8) not null check(cep ~ '^[0-9]{8}$'),
+    city varchar(60) not null,
+    state varchar(30) not null
 );

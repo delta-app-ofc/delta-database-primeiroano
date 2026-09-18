@@ -20,3 +20,10 @@ create table tb_last_water_bill(
  total_value numeric(10, 2) not null check(total_value >= 0),
  m3_value numeric(10, 2) not null check(m3_value >= 0)
 );
+
+-- tb_habit
+create table tb_habit(
+    id serial primary key,
+    name varchar(30) not null CHECK (upper(name) IN ('BANHO LONGO', 'LAVAR QUINTAL', 'LAVAR ROUPA', 'REGAR PLANTAS', 'LAVAR CARRO', 'LAVAR LOUCA')),
+    description TEXT
+);

@@ -48,3 +48,9 @@ create table tb_user_habit_day(
     user_habit_id int not null unique references tb_user_habit(id) on delete cascade,
     day_of_week_id int not null unique references tb_day_of_week(id) on delete cascade
 );
+
+-- Tabela região
+create table tb_region(
+    id serial primary key,
+    name varchar(20) not null
+);

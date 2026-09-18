@@ -11,3 +11,12 @@ create table tb_user(
     is_admin boolean default false,
     is_manager boolean default false
 );
+
+-- tb_last_water_bill
+create table tb_last_water_bill(
+ id serial primary key,
+ user_id int not null references tb_user(id) on delete cascade,
+ month date not null CHECK (EXTRACT(DAY FROM month) = 1),
+ total_value numeric(10, 2) not null check(total_value >= 0),
+ m3_value numeric(10, 2) not null check(m3_value >= 0)
+);

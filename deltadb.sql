@@ -64,7 +64,7 @@ create table tb_address(
     state varchar(30) not null
 );
 
--- Tabela propriedade
+-- tb_property
 create table tb_property(
     id serial primary key,
     name varchar(100) not null,
@@ -72,4 +72,12 @@ create table tb_property(
     classification varchar(20) not null CHECK (upper(classification) IN ('RESIDENCIAL', 'COMERCIAL')),
     address_id int not null references tb_address(id) on delete cascade,
     registration_date date not null default current_date
+);
+
+-- tb_user_property
+create table tb_user_property(
+    id serial primary key,
+    user_id int not null unique references tb_user(id) on delete cascade,
+    property_id int not null unique references tb_property(id) on delete cascade,
+    association_date date not null default current_date
 );

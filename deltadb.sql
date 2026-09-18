@@ -36,8 +36,15 @@ create table tb_user_habit(
     frequency int not null check(frequency > 0)
 );
 
--- Tabela dias da semana
+-- tb_day_of_week
 create table tb_day_of_week(
     id serial primary key,
     name varchar(20) not null check(upper(name) in ('SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA', 'SABADO', 'DOMINGO'))
+);
+
+-- tb_user_habit_day
+create table tb_user_habit_day(
+    id serial primary key,
+    user_habit_id int not null unique references tb_user_habit(id) on delete cascade,
+    day_of_week_id int not null unique references tb_day_of_week(id) on delete cascade
 );

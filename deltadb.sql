@@ -63,3 +63,13 @@ create table tb_address(
     city varchar(60) not null,
     state varchar(30) not null
 );
+
+-- Tabela propriedade
+create table tb_property(
+    id serial primary key,
+    name varchar(100) not null,
+    type varchar(20) not null check(upper(type) in ('CASA', 'APARTAMENTO')),
+    classification varchar(20) not null CHECK (upper(classification) IN ('RESIDENCIAL', 'COMERCIAL')),
+    address_id int not null references tb_address(id) on delete cascade,
+    registration_date date not null default current_date
+);

@@ -90,3 +90,12 @@ create table tb_region_rate(
     initial_validity date not null default current_date,
     final_validity date 
 );
+
+-- tb_device
+create table tb_device (
+    id serial primary key,
+    device_id varchar(15) not null unique,
+    property_id int not null references tb_property(id) on delete cascade,
+    is_active boolean not null default true,
+    installation_date date not null default current_date
+);

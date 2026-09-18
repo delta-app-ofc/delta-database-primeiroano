@@ -81,3 +81,12 @@ create table tb_user_property(
     property_id int not null unique references tb_property(id) on delete cascade,
     association_date date not null default current_date
 );
+
+-- tb_region_rate
+create table tb_region_rate(
+    id serial primary key,
+    region_id int not null references tb_region(id) on delete cascade,
+    m3_value numeric(10, 2) not null check(m3_value > 0),
+    initial_validity date not null default current_date,
+    final_validity date 
+);

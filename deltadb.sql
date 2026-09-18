@@ -27,3 +27,11 @@ create table tb_habit(
     name varchar(30) not null CHECK (upper(name) IN ('BANHO LONGO', 'LAVAR QUINTAL', 'LAVAR ROUPA', 'REGAR PLANTAS', 'LAVAR CARRO', 'LAVAR LOUCA')),
     description TEXT
 );
+
+-- tb_user_habit
+create table tb_user_habit(
+    id serial primary key,
+    user_id int not null references tb_user(id) on delete cascade,
+    habit_id int not null references tb_habit(id) on delete cascade,
+    frequency int not null check(frequency > 0)
+);

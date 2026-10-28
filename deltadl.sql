@@ -483,3 +483,18 @@ INSERT INTO tb_user_habit_day (id, user_habit_id, day_of_week_id) VALUES
 (6, 6, 6),
 (7, 7, 7);
 
+-- =====================================================================
+-- Ajusta as sequences (necessario pois os IDs foram inseridos manualmente)
+-- =====================================================================
+SELECT setval(pg_get_serial_sequence('tb_region', 'id'), (SELECT MAX(id) FROM tb_region));
+SELECT setval(pg_get_serial_sequence('tb_day_of_week', 'id'), (SELECT MAX(id) FROM tb_day_of_week));
+SELECT setval(pg_get_serial_sequence('tb_habit', 'id'), (SELECT MAX(id) FROM tb_habit));
+SELECT setval(pg_get_serial_sequence('tb_user', 'id'), (SELECT MAX(id) FROM tb_user));
+SELECT setval(pg_get_serial_sequence('tb_address', 'id'), (SELECT MAX(id) FROM tb_address));
+SELECT setval(pg_get_serial_sequence('tb_property', 'id'), (SELECT MAX(id) FROM tb_property));
+SELECT setval(pg_get_serial_sequence('tb_user_property', 'id'), (SELECT MAX(id) FROM tb_user_property));
+SELECT setval(pg_get_serial_sequence('tb_region_rate', 'id'), (SELECT MAX(id) FROM tb_region_rate));
+SELECT setval(pg_get_serial_sequence('tb_device', 'id'), (SELECT MAX(id) FROM tb_device));
+SELECT setval(pg_get_serial_sequence('tb_last_water_bill', 'id'), (SELECT MAX(id) FROM tb_last_water_bill));
+SELECT setval(pg_get_serial_sequence('tb_user_habit', 'id'), (SELECT MAX(id) FROM tb_user_habit));
+SELECT setval(pg_get_serial_sequence('tb_user_habit_day', 'id'), (SELECT MAX(id) FROM tb_user_habit_day));

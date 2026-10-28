@@ -9,7 +9,7 @@ INSERT INTO tb_region (id, name) VALUES
 (5, 'ZONA OESTE');
 
 -- =====================================================================
--- 2. tb_day_of_week (maximo 7 registros - CHECK restringe a valores fixos)
+-- 2. tb_day_of_week
 -- =====================================================================
 INSERT INTO tb_day_of_week (id, name) VALUES
 (1, 'SEGUNDA'),
@@ -21,7 +21,7 @@ INSERT INTO tb_day_of_week (id, name) VALUES
 (7, 'DOMINGO');
 
 -- =====================================================================
--- 3. tb_habit (maximo 6 registros - CHECK restringe a valores fixos)
+-- 3. tb_habit
 -- =====================================================================
 INSERT INTO tb_habit (id, name, description) VALUES
 (1, 'BANHO LONGO', 'BANHOS COM DURACAO SUPERIOR A 10 MINUTOS'),
@@ -32,7 +32,7 @@ INSERT INTO tb_habit (id, name, description) VALUES
 (6, 'LAVAR LOUCA', 'LAVAGEM DE LOUCA COM TORNEIRA ABERTA');
 
 -- =====================================================================
--- 4. tb_user (50 registros)
+-- 4. tb_user 
 -- =====================================================================
 INSERT INTO tb_user (id, name, email, password, phone, birth_date, registration_date, is_active, is_admin, is_manager) VALUES
 (1, 'ANA SOUZA', 'ana.souza1@email.com', 'SENHAFORTE101', '11987654001', '1969-12-27', '2023-01-26', TRUE, TRUE, FALSE),
@@ -87,7 +87,7 @@ INSERT INTO tb_user (id, name, email, password, phone, birth_date, registration_
 (50, 'YASMIN PEREIRA', 'yasmin.pereira50@email.com', 'SENHAFORTE150', '11987654050', '1973-09-17', '2024-01-18', TRUE, FALSE, FALSE);
 
 -- =====================================================================
--- 5. tb_address (50 registros)
+-- 5. tb_address 
 -- =====================================================================
 INSERT INTO tb_address (id, region_id, cep, city, state) VALUES
 (1, 1, '10000137', 'SAO PAULO', 'SP'),
@@ -140,3 +140,59 @@ INSERT INTO tb_address (id, region_id, cep, city, state) VALUES
 (48, 3, '10006576', 'SANTO ANDRE', 'SP'),
 (49, 4, '10006713', 'SAO BERNARDO DO CAMPO', 'SP'),
 (50, 5, '10006850', 'MAUA', 'SP');
+
+-- =====================================================================
+-- 6. tb_property
+-- =====================================================================
+INSERT INTO tb_property (id, name, type, classification, address_id, registration_date) VALUES
+(1, 'IMOVEL 01', 'APARTAMENTO', 'RESIDENCIAL', 1, '2024-07-06'),
+(2, 'IMOVEL 02', 'CASA', 'RESIDENCIAL', 2, '2025-03-08'),
+(3, 'IMOVEL 03', 'APARTAMENTO', 'RESIDENCIAL', 3, '2024-06-27'),
+(4, 'IMOVEL 04', 'CASA', 'RESIDENCIAL', 4, '2023-01-01'),
+(5, 'IMOVEL 05', 'APARTAMENTO', 'COMERCIAL', 5, '2024-09-05'),
+(6, 'IMOVEL 06', 'CASA', 'RESIDENCIAL', 6, '2023-11-28'),
+(7, 'IMOVEL 07', 'APARTAMENTO', 'RESIDENCIAL', 7, '2024-05-15'),
+(8, 'IMOVEL 08', 'CASA', 'RESIDENCIAL', 8, '2023-01-20'),
+(9, 'IMOVEL 09', 'APARTAMENTO', 'RESIDENCIAL', 9, '2023-04-25'),
+(10, 'IMOVEL 10', 'CASA', 'COMERCIAL', 10, '2024-01-07'),
+(11, 'IMOVEL 11', 'APARTAMENTO', 'RESIDENCIAL', 11, '2025-06-18'),
+(12, 'IMOVEL 12', 'CASA', 'RESIDENCIAL', 12, '2025-05-01'),
+(13, 'IMOVEL 13', 'APARTAMENTO', 'RESIDENCIAL', 13, '2025-04-06'),
+(14, 'IMOVEL 14', 'CASA', 'RESIDENCIAL', 14, '2023-11-11'),
+(15, 'IMOVEL 15', 'APARTAMENTO', 'COMERCIAL', 15, '2023-09-03'),
+(16, 'IMOVEL 16', 'CASA', 'RESIDENCIAL', 16, '2023-03-01'),
+(17, 'IMOVEL 17', 'APARTAMENTO', 'RESIDENCIAL', 17, '2023-09-04'),
+(18, 'IMOVEL 18', 'CASA', 'RESIDENCIAL', 18, '2025-06-18'),
+(19, 'IMOVEL 19', 'APARTAMENTO', 'RESIDENCIAL', 19, '2024-08-03'),
+(20, 'IMOVEL 20', 'CASA', 'COMERCIAL', 20, '2023-03-22'),
+(21, 'IMOVEL 21', 'APARTAMENTO', 'RESIDENCIAL', 21, '2023-03-29'),
+(22, 'IMOVEL 22', 'CASA', 'RESIDENCIAL', 22, '2025-01-19'),
+(23, 'IMOVEL 23', 'APARTAMENTO', 'RESIDENCIAL', 23, '2024-05-12'),
+(24, 'IMOVEL 24', 'CASA', 'RESIDENCIAL', 24, '2025-04-15'),
+(25, 'IMOVEL 25', 'APARTAMENTO', 'COMERCIAL', 25, '2023-03-12'),
+(26, 'IMOVEL 26', 'CASA', 'RESIDENCIAL', 26, '2025-02-17'),
+(27, 'IMOVEL 27', 'APARTAMENTO', 'RESIDENCIAL', 27, '2024-06-29'),
+(28, 'IMOVEL 28', 'CASA', 'RESIDENCIAL', 28, '2025-02-23'),
+(29, 'IMOVEL 29', 'APARTAMENTO', 'RESIDENCIAL', 29, '2023-05-09'),
+(30, 'IMOVEL 30', 'CASA', 'COMERCIAL', 30, '2023-05-12'),
+(31, 'IMOVEL 31', 'APARTAMENTO', 'RESIDENCIAL', 31, '2024-11-06'),
+(32, 'IMOVEL 32', 'CASA', 'RESIDENCIAL', 32, '2024-05-01'),
+(33, 'IMOVEL 33', 'APARTAMENTO', 'RESIDENCIAL', 33, '2024-07-16'),
+(34, 'IMOVEL 34', 'CASA', 'RESIDENCIAL', 34, '2023-06-19'),
+(35, 'IMOVEL 35', 'APARTAMENTO', 'COMERCIAL', 35, '2023-09-29'),
+(36, 'IMOVEL 36', 'CASA', 'RESIDENCIAL', 36, '2024-06-24'),
+(37, 'IMOVEL 37', 'APARTAMENTO', 'RESIDENCIAL', 37, '2025-06-12'),
+(38, 'IMOVEL 38', 'CASA', 'RESIDENCIAL', 38, '2024-09-13'),
+(39, 'IMOVEL 39', 'APARTAMENTO', 'RESIDENCIAL', 39, '2024-03-09'),
+(40, 'IMOVEL 40', 'CASA', 'COMERCIAL', 40, '2023-08-05'),
+(41, 'IMOVEL 41', 'APARTAMENTO', 'RESIDENCIAL', 41, '2024-07-06'),
+(42, 'IMOVEL 42', 'CASA', 'RESIDENCIAL', 42, '2025-02-12'),
+(43, 'IMOVEL 43', 'APARTAMENTO', 'RESIDENCIAL', 43, '2025-01-17'),
+(44, 'IMOVEL 44', 'CASA', 'RESIDENCIAL', 44, '2024-12-07'),
+(45, 'IMOVEL 45', 'APARTAMENTO', 'COMERCIAL', 45, '2023-07-25'),
+(46, 'IMOVEL 46', 'CASA', 'RESIDENCIAL', 46, '2024-12-31'),
+(47, 'IMOVEL 47', 'APARTAMENTO', 'RESIDENCIAL', 47, '2023-11-16'),
+(48, 'IMOVEL 48', 'CASA', 'RESIDENCIAL', 48, '2024-02-13'),
+(49, 'IMOVEL 49', 'APARTAMENTO', 'RESIDENCIAL', 49, '2024-11-18'),
+(50, 'IMOVEL 50', 'CASA', 'COMERCIAL', 50, '2024-10-27');
+

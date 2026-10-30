@@ -1,7 +1,5 @@
 -- =====================================================================
 -- DATA LOAD - Sistema de Gestao de Consumo de Agua
--- 50 registros por tabela (onde as constraints permitem)
--- Todos os dados textuais em MAIUSCULO
 -- =====================================================================
 
 BEGIN;
@@ -9,7 +7,7 @@ BEGIN;
 -- =====================================================================
 -- 1. tb_region (5 registros)
 -- =====================================================================
-INSERT INTO tb_region (id, name) VALUES
+INSERT INTO tb_region (id, region_name) VALUES
 (1, 'CENTRO'),
 (2, 'ZONA NORTE'),
 (3, 'ZONA SUL'),
@@ -19,7 +17,7 @@ INSERT INTO tb_region (id, name) VALUES
 -- =====================================================================
 -- 2. tb_day_of_week (maximo 7 registros - CHECK restringe a valores fixos)
 -- =====================================================================
-INSERT INTO tb_day_of_week (id, name) VALUES
+INSERT INTO tb_day_of_week (id, day_name) VALUES
 (1, 'SEGUNDA'),
 (2, 'TERCA'),
 (3, 'QUARTA'),
@@ -31,7 +29,7 @@ INSERT INTO tb_day_of_week (id, name) VALUES
 -- =====================================================================
 -- 3. tb_habit (maximo 6 registros - CHECK restringe a valores fixos)
 -- =====================================================================
-INSERT INTO tb_habit (id, name, description) VALUES
+INSERT INTO tb_habit (id, habit_name, habit_description) VALUES
 (1, 'BANHO LONGO', 'BANHOS COM DURACAO SUPERIOR A 10 MINUTOS'),
 (2, 'LAVAR QUINTAL', 'LAVAGEM DE AREA EXTERNA/QUINTAL COM MANGUEIRA'),
 (3, 'LAVAR ROUPA', 'USO DE MAQUINA DE LAVAR ROUPAS'),
@@ -42,7 +40,7 @@ INSERT INTO tb_habit (id, name, description) VALUES
 -- =====================================================================
 -- 4. tb_user (50 registros)
 -- =====================================================================
-INSERT INTO tb_user (id, name, email, password, phone, birth_date, registration_date, is_active, is_admin, is_manager) VALUES
+INSERT INTO tb_user (id, user_name, email, user_password, phone, birth_date, registration_date, is_active, is_admin, is_manager) VALUES
 (1, 'ANA SOUZA', 'ana.souza1@email.com', 'SENHAFORTE101', '11987654001', '1969-12-27', '2023-01-26', TRUE, TRUE, FALSE),
 (2, 'BRUNO LIMA', 'bruno.lima2@email.com', 'SENHAFORTE102', '11987654002', '1981-12-20', '2023-08-17', TRUE, FALSE, TRUE),
 (3, 'CARLA MENDES', 'carla.mendes3@email.com', 'SENHAFORTE103', '11987654003', '1969-03-12', '2024-11-23', TRUE, FALSE, TRUE),
@@ -97,7 +95,7 @@ INSERT INTO tb_user (id, name, email, password, phone, birth_date, registration_
 -- =====================================================================
 -- 5. tb_address (50 registros)
 -- =====================================================================
-INSERT INTO tb_address (id, region_id, cep, city, state) VALUES
+INSERT INTO tb_address (id, region_id, cep, city, adress_state) VALUES
 (1, 1, '10000137', 'SAO PAULO', 'SP'),
 (2, 2, '10000274', 'CAMPINAS', 'SP'),
 (3, 3, '10000411', 'SANTOS', 'SP'),
@@ -152,7 +150,7 @@ INSERT INTO tb_address (id, region_id, cep, city, state) VALUES
 -- =====================================================================
 -- 6. tb_property (50 registros)
 -- =====================================================================
-INSERT INTO tb_property (id, name, type, classification, address_id, registration_date) VALUES
+INSERT INTO tb_property (id, property_name, property_type, classification, address_id, registration_date) VALUES
 (1, 'IMOVEL 01', 'APARTAMENTO', 'RESIDENCIAL', 1, '2024-07-06'),
 (2, 'IMOVEL 02', 'CASA', 'RESIDENCIAL', 2, '2025-03-08'),
 (3, 'IMOVEL 03', 'APARTAMENTO', 'RESIDENCIAL', 3, '2024-06-27'),
@@ -372,7 +370,7 @@ INSERT INTO tb_device (id, device_id, property_id, is_active, installation_date)
 -- =====================================================================
 -- 10. tb_last_water_bill (50 registros - month sempre dia 1)
 -- =====================================================================
-INSERT INTO tb_last_water_bill (id, user_id, month, total_value, m3_value) VALUES
+INSERT INTO tb_last_water_bill (id, user_id, bill_month, total_value, m3_value) VALUES
 (1, 1, '2024-01-01', 80.1, 14.88),
 (2, 2, '2024-02-01', 411.57, 81.57),
 (3, 3, '2024-03-01', 383.84, 75.52),

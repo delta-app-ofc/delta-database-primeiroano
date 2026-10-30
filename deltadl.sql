@@ -1,13 +1,7 @@
 -- =====================================================================
--- DATA LOAD - Sistema de Gestao de Consumo de Agua
+-- 1. tb_region 
 -- =====================================================================
-
-BEGIN;
-
--- =====================================================================
--- 1. tb_region (5 registros)
--- =====================================================================
-INSERT INTO tb_region (id, region_name) VALUES
+INSERT INTO tb_region (id, name) VALUES
 (1, 'CENTRO'),
 (2, 'ZONA NORTE'),
 (3, 'ZONA SUL'),
@@ -15,9 +9,9 @@ INSERT INTO tb_region (id, region_name) VALUES
 (5, 'ZONA OESTE');
 
 -- =====================================================================
--- 2. tb_day_of_week (maximo 7 registros - CHECK restringe a valores fixos)
+-- 2. tb_day_of_week
 -- =====================================================================
-INSERT INTO tb_day_of_week (id, day_name) VALUES
+INSERT INTO tb_day_of_week (id, name) VALUES
 (1, 'SEGUNDA'),
 (2, 'TERCA'),
 (3, 'QUARTA'),
@@ -27,9 +21,9 @@ INSERT INTO tb_day_of_week (id, day_name) VALUES
 (7, 'DOMINGO');
 
 -- =====================================================================
--- 3. tb_habit (maximo 6 registros - CHECK restringe a valores fixos)
+-- 3. tb_habit
 -- =====================================================================
-INSERT INTO tb_habit (id, habit_name, habit_description) VALUES
+INSERT INTO tb_habit (id, name, description) VALUES
 (1, 'BANHO LONGO', 'BANHOS COM DURACAO SUPERIOR A 10 MINUTOS'),
 (2, 'LAVAR QUINTAL', 'LAVAGEM DE AREA EXTERNA/QUINTAL COM MANGUEIRA'),
 (3, 'LAVAR ROUPA', 'USO DE MAQUINA DE LAVAR ROUPAS'),
@@ -38,9 +32,9 @@ INSERT INTO tb_habit (id, habit_name, habit_description) VALUES
 (6, 'LAVAR LOUCA', 'LAVAGEM DE LOUCA COM TORNEIRA ABERTA');
 
 -- =====================================================================
--- 4. tb_user (50 registros)
+-- 4. tb_user 
 -- =====================================================================
-INSERT INTO tb_user (id, user_name, email, user_password, phone, birth_date, registration_date, is_active, is_admin, is_manager) VALUES
+INSERT INTO tb_user (id, name, email, password, phone, birth_date, registration_date, is_active, is_admin, is_manager) VALUES
 (1, 'ANA SOUZA', 'ana.souza1@email.com', 'SENHAFORTE101', '11987654001', '1969-12-27', '2023-01-26', TRUE, TRUE, FALSE),
 (2, 'BRUNO LIMA', 'bruno.lima2@email.com', 'SENHAFORTE102', '11987654002', '1981-12-20', '2023-08-17', TRUE, FALSE, TRUE),
 (3, 'CARLA MENDES', 'carla.mendes3@email.com', 'SENHAFORTE103', '11987654003', '1969-03-12', '2024-11-23', TRUE, FALSE, TRUE),
@@ -93,9 +87,9 @@ INSERT INTO tb_user (id, user_name, email, user_password, phone, birth_date, reg
 (50, 'YASMIN PEREIRA', 'yasmin.pereira50@email.com', 'SENHAFORTE150', '11987654050', '1973-09-17', '2024-01-18', TRUE, FALSE, FALSE);
 
 -- =====================================================================
--- 5. tb_address (50 registros)
+-- 5. tb_address 
 -- =====================================================================
-INSERT INTO tb_address (id, region_id, cep, city, adress_state) VALUES
+INSERT INTO tb_address (id, region_id, cep, city, state) VALUES
 (1, 1, '10000137', 'SAO PAULO', 'SP'),
 (2, 2, '10000274', 'CAMPINAS', 'SP'),
 (3, 3, '10000411', 'SANTOS', 'SP'),
@@ -313,7 +307,7 @@ INSERT INTO tb_region_rate (id, region_id, m3_value, initial_validity, final_val
 (50, 5, 5.09, '2024-11-14', NULL);
 
 -- =====================================================================
--- 9. tb_device (50 registros)
+-- 9. tb_device
 -- =====================================================================
 INSERT INTO tb_device (id, device_id, property_id, is_active, installation_date) VALUES
 (1, 100001, 1, TRUE, '2025-04-16'),
@@ -368,7 +362,7 @@ INSERT INTO tb_device (id, device_id, property_id, is_active, installation_date)
 (50, 100050, 50, TRUE, '2023-04-25');
 
 -- =====================================================================
--- 10. tb_last_water_bill (50 registros - month sempre dia 1)
+-- 10. tb_last_water_bill
 -- =====================================================================
 INSERT INTO tb_last_water_bill (id, user_id, bill_month, total_value, m3_value) VALUES
 (1, 1, '2024-01-01', 80.1, 14.88),
@@ -423,7 +417,7 @@ INSERT INTO tb_last_water_bill (id, user_id, bill_month, total_value, m3_value) 
 (50, 50, '2024-02-01', 221.96, 43.69);
 
 -- =====================================================================
--- 11. tb_user_habit (50 registros)
+-- 11. tb_user_habit
 -- =====================================================================
 INSERT INTO tb_user_habit (id, user_id, habit_id, frequency) VALUES
 (1, 1, 1, 6),
@@ -478,10 +472,7 @@ INSERT INTO tb_user_habit (id, user_id, habit_id, frequency) VALUES
 (50, 50, 2, 2);
 
 -- =====================================================================
--- 12. tb_user_habit_day (maximo 7 registros)
--- ATENCAO: user_habit_id e day_of_week_id sao UNIQUE nesta tabela.
--- Isso significa que cada dia da semana só pode aparecer UMA VEZ
--- em toda a tabela (nao por usuario). Por isso o maximo possivel é 7.
+-- 12. tb_user_habit_day
 -- =====================================================================
 INSERT INTO tb_user_habit_day (id, user_habit_id, day_of_week_id) VALUES
 (1, 1, 1),
@@ -507,5 +498,3 @@ SELECT setval(pg_get_serial_sequence('tb_device', 'id'), (SELECT MAX(id) FROM tb
 SELECT setval(pg_get_serial_sequence('tb_last_water_bill', 'id'), (SELECT MAX(id) FROM tb_last_water_bill));
 SELECT setval(pg_get_serial_sequence('tb_user_habit', 'id'), (SELECT MAX(id) FROM tb_user_habit));
 SELECT setval(pg_get_serial_sequence('tb_user_habit_day', 'id'), (SELECT MAX(id) FROM tb_user_habit_day));
-
-COMMIT;
